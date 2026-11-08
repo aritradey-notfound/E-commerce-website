@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUSTECH | Premium Electronics & Future Gear</title>
+  <meta name="description" content="Discover precision-engineered tech devices, ultra-portable computing, hi-fi audio, and smart lifestyle wearables at NexusTech.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="announcement-container">
+      <span class="badge-pill">FLASH DEAL</span>
+      <p class="announcement-text">
+        Enjoy <strong>15% OFF</strong> storewide on orders over $150 with code <code class="promo-code-pill" id="copyPromoCode">NEXUS15</code>
+      </p>
+      <div class="announcement-actions">
+        <span class="shipping-info">⚡ Free Express Shipping over $99</span>
+        <button id="themeToggleBtn" class="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="header-inner container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="NexusTech Home">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
+            <path d="M9 23V9L23 23V9" stroke="var(--color-bg)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">NEXUS<span class="logo-accent">TECH</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><button class="nav-filter-btn active" data-category="all">All Tech</button></li>
+          <li><button class="nav-filter-btn" data-category="audio">Audio & Hi-Fi</button></li>
+          <li><button class="nav-filter-btn" data-category="computing">Computing</button></li>
+          <li><button class="nav-filter-btn" data-category="wearables">Wearables</button></li>
+          <li><button class="nav-filter-btn" data-category="accessories">Accessories</button></li>
+        </ul>
+      </nav>
+
+      <!-- Search & User Actions -->
+      <div class="header-actions">
+        <!-- Live Search Bar -->
+        <div class="search-box-wrapper" id="searchWrapper">
+          <div class="search-input-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="searchInput" placeholder="Search gadgets, MacBooks, ANC..." autocomplete="off" aria-label="Search products">
+            <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" style="display:none;">&times;</button>
+          </div>
+          <!-- Live Autocomplete Dropdown -->
+          <div class="search-dropdown" id="searchDropdown" aria-live="polite"></div>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button id="wishlistTriggerBtn" class="action-btn" aria-label="View Wishlist" title="Wishlist">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count" id="wishlistCount">0</span>
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button id="cartTriggerBtn" class="action-btn cart-btn" aria-label="View Shopping Cart" title="Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-total-badge" id="cartCount">0</span>
+          <span class="cart-label-amount" id="headerCartTotal">$0.00</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <ul class="mobile-nav-links">
+        <li><button class="mobile-filter-btn active" data-category="all">All Tech</button></li>
+        <li><button class="mobile-filter-btn" data-category="audio">Audio & Hi-Fi</button></li>
+        <li><button class="mobile-filter-btn" data-category="computing">Computing</button></li>
+        <li><button class="mobile-filter-btn" data-category="wearables">Wearables</button></li>
+        <li><button class="mobile-filter-btn" data-category="accessories">Accessories</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="pulse-dot"></span>
+            <span>NEXT-GEN FLAGSHIP RELEASE</span>
+          </div>
+          <h1 class="hero-title">Engineering The Future of Everyday Tech.</h1>
+          <p class="hero-subtitle">
+            Immerse yourself in acoustic precision, studio-grade computing, and tactile hardware. Designed for visionaries, creators, and audiophiles.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#productsSection" class="btn btn-primary btn-lg">
+              <span>Shop Current Collection</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <button class="btn btn-secondary btn-lg" id="heroQuickDealBtn">
+              <span>View Deal of the Day</span>
+            </button>
+          </div>
+          <!-- Hero Stats / Social Proof -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">4.9/5</span>
+              <span class="stat-label">Over 14,000+ Verified Reviews</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">2-Year</span>
+              <span class="stat-label">Hassle-Free Direct Warranty</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">24h</span>
+              <span class="stat-label">Express Worldwide Dispatch</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card-glow"></div>
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80" 
+                 alt="Nexus Studio Pro Spatial Headphones" 
+                 class="hero-main-img" 
+                 loading="eager" 
+                 fetchpriority="high">
+            <div class="floating-badge top-right">
+              <span class="badge-icon">✦</span>
+              <div>
+                <strong>Acoustic Hi-Res</strong>
+                <p>Lossless 96kHz/24bit Audio</p>
+              </div>
+            </div>
+            <div class="floating-badge bottom-left">
+              <span class="badge-icon">🔋</span>
+              <div>
+                <strong>60h Ultra Battery</strong>
+                <p>Fast-charge 10m = 8h playback</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges Bar -->
+    <section class="trust-bar">
+      <div class="container trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4>Global Carbon-Neutral Delivery</h4>
+            <p>Direct to your doorstep within 48-72 hours</p>
+          </div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>30-Day Risk-Free Trial</h4>
+            <p>Love your device or return it with zero fees</p>
+          </div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+          </div>
+          <div>
+            <h4>Encrypted Checkout</h4>
+            <p>256-bit bank level SSL payment security</p>
+          </div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h4>24/7 Human Tech Support</h4>
+            <p>Real hardware engineers available anytime</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deal of the Day Spotlight -->
+    <section class="deal-spotlight container" id="dealSection">
+      <div class="deal-card">
+        <div class="deal-badge-pill">🔥 LIMITED TIME DEAL OF THE DAY</div>
+        <div class="deal-grid">
+          <div class="deal-info">
+            <span class="deal-category">FLAGSHIP COMPUTING</span>
+            <h2 class="deal-title">Nexus TitanBook Studio 16" Pro</h2>
+            <p class="deal-desc">
+              Powered by the 16-Core M3 Titan architecture with 48GB Unified Memory and liquid crystal OLED display with 165Hz ProMotion refresh rate.
+            </p>
+            <div class="deal-pricing">
+              <span class="deal-current-price">$2,199.00</span>
+              <span class="deal-old-price">$2,599.00</span>
+              <span class="deal-save-tag">SAVE $400 TODAY</span>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-wrapper">
+              <span class="countdown-label">Offer expires in:</span>
+              <div class="countdown-timer" id="countdownTimer">
+                <div class="time-block"><span class="time-val" id="timerHours">08</span><span class="time-unit">Hours</span></div>
+                <div class="time-colon">:</div>
+                <div class="time-block"><span class="time-val" id="timerMinutes">42</span><span class="time-unit">Mins</span></div>
+                <div class="time-colon">:</div>
+                <div class="time-block"><span class="time-val" id="timerSeconds">19</span><span class="time-unit">Secs</span></div>
+              </div>
+            </div>
+
+            <div class="deal-action-buttons">
+              <button class="btn btn-primary" id="claimDealBtn" data-product-id="titanbook-16">
+                <span>Claim This Deal Now</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                </svg>
+              </button>
+              <button class="btn btn-outline" id="quickViewDealBtn" data-product-id="titanbook-16">
+                Quick Specs
+              </button>
+            </div>
+          </div>
+
+          <div class="deal-image-container">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80" 
+                 alt="Nexus TitanBook Studio 16" 
+                 class="deal-img" 
+                 loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Products Catalog Section -->
+    <section class="products-section container" id="productsSection">
+      <!-- Section Header -->
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Curated Hardware Collection</h2>
+          <p class="section-subtitle">Browse ultra-modern audio, laptops, intelligent wearables, and desk gear.</p>
+        </div>
+        <div class="products-count-badge">
+          Showing <span id="displayedCount">0</span> of <span id="totalCount">0</span> products
+        </div>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div class="catalog-controls-bar">
+        <!-- Category Filters -->
+        <div class="category-chips" id="categoryChips">
+          <button class="chip active" data-cat="all">All Gear</button>
+          <button class="chip" data-cat="audio">Audio & Hi-Fi</button>
+          <button class="chip" data-cat="computing">Computing</button>
+          <button class="chip" data-cat="wearables">Smart Wearables</button>
+          <button class="chip" data-cat="accessories">Desk & Power</button>
+        </div>
+
+        <!-- Secondary Controls: Sorting, Price, InStock, View -->
+        <div class="controls-right">
+          <!-- Price Range Filter Dropdown -->
+          <div class="dropdown-filter">
+            <select id="priceFilter" aria-label="Filter by maximum price">
+              <option value="all">All Prices</option>
+              <option value="under100">Under $100</option>
+              <option value="100to500">$100 - $500</option>
+              <option value="500to1000">$500 - $1,000</option>
+              <option value="over1000">$1,000+</option>
+            </select>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="dropdown-filter">
+            <select id="sortSelect" aria-label="Sort products">
+              <option value="featured">Featured / Trending</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="discount">Biggest Discount</option>
+            </select>
+          </div>
+
+          <!-- In-Stock Toggle -->
+          <label class="instock-toggle" title="Show in-stock items only">
+            <input type="checkbox" id="inStockCheckbox">
+            <span class="slider-toggle"></span>
+            <span class="toggle-text">In Stock</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Active Search / Filter State Indicators -->
+      <div class="active-filter-tags" id="activeFilterTags" style="display: none;"></div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid" aria-live="polite">
+        <!-- Product Cards injected dynamically via app.js -->
+      </div>
+
+      <!-- Empty State (When no filters match) -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon-box">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+        <h3>No gadgets match your criteria</h3>
+        <p>Try clearing active filters or searching for terms like "audio", "keyboard", "headphones", or "laptop".</p>
+        <button class="btn btn-secondary" id="resetFiltersBtn">Reset All Filters</button>
+      </div>
+    </section>
+
+    <!-- Why Choose Nexus Section -->
+    <section class="features-breakdown container">
+      <div class="features-box">
+        <h2 class="features-title">The Nexus Engineering Standard</h2>
+        <div class="features-row">
+          <div class="feature-col">
+            <div class="feature-number">01</div>
+            <h3>Aerospace Aluminum & Recycled Glass</h3>
+            <p>Every enclosure is CNC machined from a single block of 6000-series alloy, anodized for tactile resistance and durability.</p>
+          </div>
+          <div class="feature-col">
+            <div class="feature-number">02</div>
+            <h3>Custom DSP & Tuned Drivers</h3>
+            <p>In-house acoustic architectures calibrated for balanced frequency curves, delivering studio clarity with ultra-low THD (<0.05%).</p>
+          </div>
+          <div class="feature-col">
+            <div class="feature-number">03</div>
+            <h3>Seamless Cross-Platform Sync</h3>
+            <p>Pair instantly across macOS, Windows, iOS, and Android with multi-point Bluetooth 5.4 and zero-latency wireless dongles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials Section -->
+    <section class="testimonials-section container">
+      <div class="section-header center">
+        <h2 class="section-title">Endorsed by Audio Engineers & Developers</h2>
+        <p class="section-subtitle">Real feedback from over 25,000 customers worldwide.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The Nexus Horizon ANC headphones replaced my AirPods Max on day one. The spatial imaging and clarity in acoustic tracks is unmatched at this price."</p>
+          <div class="author-row">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah Lin" class="author-avatar">
+            <div>
+              <strong>Sarah Lin</strong>
+              <span>Sound Designer @ Apex Studios</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"TitanBook 16 is a monster workstation. Compiles massive Rust codebases in seconds without thermal throttling, and the display is breathtaking."</p>
+          <div class="author-row">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="David Marcus" class="author-avatar">
+            <div>
+              <strong>David Marcus</strong>
+              <span>Principal Engineer @ Cloudscale</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Order was dispatched 3 hours after payment and arrived in London within 48 hours. The magnetic unboxing experience feels like pure luxury."</p>
+          <div class="author-row">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Elena Rostova" class="author-avatar">
+            <div>
+              <strong>Elena Rostova</strong>
+              <span>Architect & Creator</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Newsletter & 15% Off Promo -->
+    <section class="newsletter-section container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <span class="badge-pill">JOIN THE INNER CIRCLE</span>
+          <h2>Unlock $25 Off Your First Order</h2>
+          <p>Subscribe to receive secret drops, firmware releases, and exclusive member discounts directly to your inbox.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+            <p class="form-fineprint">No spam ever. Unsubscribe at any time with one click.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-symbol">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
+              <path d="M9 23V9L23 23V9" stroke="var(--color-bg)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="logo-text">NEXUS<span class="logo-accent">TECH</span></span>
+        </div>
+        <p class="footer-bio">
+          Next-generation consumer hardware engineered with zero compromises. Designed in San Francisco, calibrated for the world.
+        </p>
+        <div class="payment-icons-row">
+          <span class="pay-badge">Apple Pay</span>
+          <span class="pay-badge">Google Pay</span>
+          <span class="pay-badge">Visa</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">UPI / COD</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#productsSection" class="footer-cat-link" data-category="audio">Studio Headphones</a></li>
+          <li><a href="#productsSection" class="footer-cat-link" data-category="audio">Wireless Earbuds</a></li>
+          <li><a href="#productsSection" class="footer-cat-link" data-category="computing">TitanBook Laptops</a></li>
+          <li><a href="#productsSection" class="footer-cat-link" data-category="computing">Mechanical Keyboards</a></li>
+          <li><a href="#productsSection" class="footer-cat-link" data-category="wearables">Smart Watches</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support & Care</h4>
+        <ul>
+          <li><a href="#" class="footer-dummy-link" data-dialog="shipping">Order Status & Tracking</a></li>
+          <li><a href="#" class="footer-dummy-link" data-dialog="warranty">2-Year Limited Warranty</a></li>
+          <li><a href="#" class="footer-dummy-link" data-dialog="returns">Returns & Exchanges (30 Days)</a></li>
+          <li><a href="#" class="footer-dummy-link" data-dialog="support">Firmware Downloads</a></li>
+          <li><a href="#" class="footer-dummy-link" data-dialog="contact">Contact Engineering Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Nexus Labs</a></li>
+          <li><a href="#">Sustainability & Materials</a></li>
+          <li><a href="#">Press Kit & Media</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+          <li><a href="#">Privacy & Legal Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Nexus Technologies Inc. All rights reserved. Precision engineered for high performance.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span>•</span>
+        <a href="#">Terms of Sale</a>
+        <span>•</span>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & DRAWERS ==================== -->
+
+  <!-- Slide-out Shopping Cart Drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <div class="cart-panel">
+      <!-- Drawer Header -->
+      <div class="cart-header">
+        <div class="cart-title-row">
+          <h3>Your Bag (<span id="drawerCartCount">0</span>)</h3>
+          <button class="close-drawer-btn" id="closeCartBtn" aria-label="Close Shopping Bag">&times;</button>
+        </div>
+        <!-- Free Shipping Progress Bar -->
+        <div class="shipping-progress-container" id="shippingProgressBox">
+          <div class="shipping-progress-text" id="shippingProgressText">
+            Add <strong>$99.00</strong> more for Free Worldwide Express Delivery
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="shippingProgressBar" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div class="cart-items-list" id="cartItemsList">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- Empty Cart State -->
+      <div class="empty-cart-state" id="emptyCartView" style="display: none;">
+        <div class="empty-bag-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h4>Your shopping bag is empty</h4>
+        <p>Explore our curated hardware selection and elevate your workspace today.</p>
+        <button class="btn btn-primary" id="continueShoppingFromCartBtn">Start Exploring</button>
+      </div>
+
+      <!-- Cart Footer / Summary -->
+      <div class="cart-footer" id="cartFooter">
+        <!-- Promo Code Input -->
+        <div class="cart-promo-section">
+          <form class="promo-form" id="promoForm">
+            <input type="text" id="promoInput" placeholder="Promo code (e.g. NEXUS15)" uppercase autocomplete="off">
+            <button type="submit" class="btn btn-secondary btn-sm">Apply</button>
+          </form>
+          <div class="applied-promo-tag" id="appliedPromoTag" style="display: none;">
+            <span>Coupon applied: <strong id="appliedPromoCode"></strong></span>
+            <button type="button" id="removePromoBtn" aria-label="Remove coupon">&times;</button>
+          </div>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="cart-summary-breakdown">
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">$0.00</span>
+          </div>
+          <div class="summary-line discount-line" id="discountLine" style="display: none;">
+            <span>Discount</span>
+            <span id="summaryDiscount">-$0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span id="summaryShipping">Calculated next</span>
+          </div>
+          <div class="summary-line">
+            <span>Estimated Tax (5%)</span>
+            <span id="summaryTax">$0.00</span>
+          </div>
+          <div class="summary-line total-line">
+            <span>Total</span>
+            <span id="summaryTotal">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Trigger Button -->
+        <button class="btn btn-primary btn-block btn-lg" id="proceedCheckoutBtn">
+          <span>Proceed to Checkout</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Slide-out Wishlist Drawer -->
+  <aside class="wishlist-drawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="cart-backdrop" id="wishlistBackdrop"></div>
+    <div class="wishlist-panel">
+      <div class="cart-header">
+        <div class="cart-title-row">
+          <h3>Saved Wishlist (<span id="drawerWishlistCount">0</span>)</h3>
+          <button class="close-drawer-btn" id="closeWishlistBtn" aria-label="Close Wishlist">&times;</button>
+        </div>
+      </div>
+      <div class="wishlist-items-list" id="wishlistItemsList">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="empty-cart-state" id="emptyWishlistView" style="display: none;">
+        <h4>No saved items yet</h4>
+        <p>Click the heart icon on any product card to bookmark it for later.</p>
+        <button class="btn btn-secondary" id="browseWishlistBtn">Browse Collection</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Quick View Native <dialog> Modal -->
+  <dialog class="custom-dialog" id="quickViewDialog" aria-labelledby="modalProductTitle">
+    <div class="dialog-content">
+      <button class="close-dialog-btn" id="closeQuickViewBtn" aria-label="Close details">&times;</button>
+      <div class="quick-view-grid" id="quickViewDetailsContainer">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Multi-Step Checkout Native <dialog> Modal -->
+  <dialog class="custom-dialog checkout-dialog" id="checkoutDialog" aria-labelledby="checkoutModalTitle">
+    <div class="dialog-content">
+      <button class="close-dialog-btn" id="closeCheckoutBtn" aria-label="Close checkout">&times;</button>
+      
+      <div class="checkout-container">
+        <!-- Checkout Progress Stepper -->
+        <div class="checkout-stepper">
+          <div class="step-item active" id="stepIndicator1">
+            <span class="step-num">1</span>
+            <span class="step-title">Shipping</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="stepIndicator2">
+            <span class="step-num">2</span>
+            <span class="step-title">Payment</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="stepIndicator3">
+            <span class="step-num">3</span>
+            <span class="step-title">Review</span>
+          </div>
+        </div>
+
+        <form id="checkoutForm" novalidate>
+          <!-- STEP 1: Shipping Address -->
+          <div class="checkout-step-panel active" id="checkoutStep1">
+            <h3 id="checkoutModalTitle" class="checkout-heading">Shipping Information</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="shipFirstName">First Name *</label>
+                <input type="text" id="shipFirstName" required placeholder="Alex">
+                <span class="error-msg">Required</span>
+              </div>
+              <div class="form-group">
+                <label for="shipLastName">Last Name *</label>
+                <input type="text" id="shipLastName" required placeholder="Mercer">
+                <span class="error-msg">Required</span>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="shipEmail">Email Address * (For order confirmation)</label>
+                <input type="email" id="shipEmail" required placeholder="alex.mercer@example.com">
+                <span class="error-msg">Valid email required</span>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="shipAddress">Street Address *</label>
+                <input type="text" id="shipAddress" required placeholder="742 Evergreen Terrace, Suite 400">
+                <span class="error-msg">Required</span>
+              </div>
+              <div class="form-group">
+                <label for="shipCity">City *</label>
+                <input type="text" id="shipCity" required placeholder="San Francisco">
+                <span class="error-msg">Required</span>
+              </div>
+              <div class="form-group">
+                <label for="shipPostal">Postal / ZIP Code *</label>
+                <input type="text" id="shipPostal" required placeholder="94107">
+                <span class="error-msg">Required</span>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="shipCountry">Country / Region</label>
+                <select id="shipCountry">
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="EU">European Union</option>
+                  <option value="IN">India</option>
+                  <option value="AU">Australia</option>
+                  <option value="JP">Japan</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Shipping Method Radio -->
+            <div class="shipping-methods-box">
+              <h4>Select Shipping Method</h4>
+              <label class="shipping-option">
+                <input type="radio" name="shippingSpeed" value="standard" checked>
+                <div class="shipping-option-content">
+                  <div>
+                    <strong>Standard Carbon-Neutral Delivery (3-5 Days)</strong>
+                    <p>Free for orders over $99</p>
+                  </div>
+                  <span class="shipping-cost" id="standardShipPrice">FREE</span>
+                </div>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shippingSpeed" value="express">
+                <div class="shipping-option-content">
+                  <div>
+                    <strong>Nexus Priority Air Express (1-2 Days)</strong>
+                    <p>Tracked next-flight-out dispatch</p>
+                  </div>
+                  <span class="shipping-cost">$15.00</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-outline" id="backToCartFromCheckoutBtn">Back to Cart</button>
+              <button type="button" class="btn btn-primary" id="goToStep2Btn">Continue to Payment &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Payment Method -->
+          <div class="checkout-step-panel" id="checkoutStep2" style="display:none;">
+            <h3 class="checkout-heading">Secure Payment Details</h3>
+            
+            <div class="payment-tabs">
+              <button type="button" class="pay-tab active" data-pay="card">
+                <span>Credit / Debit Card</span>
+              </button>
+              <button type="button" class="pay-tab" data-pay="upi">
+                <span>Instant UPI / QR</span>
+              </button>
+              <button type="button" class="pay-tab" data-pay="cod">
+                <span>Cash on Delivery</span>
+              </button>
+            </div>
+
+            <!-- Card View -->
+            <div class="pay-method-view active" id="payMethodCard">
+              <div class="card-preview-chip">
+                <div class="card-chip-symbol"></div>
+                <div class="card-preview-number" id="cardPreviewNumber">•••• •••• •••• ••••</div>
+                <div class="card-preview-bottom">
+                  <div>
+                    <span class="card-lbl">CARD HOLDER</span>
+                    <strong id="cardPreviewName">YOUR NAME</strong>
+                  </div>
+                  <div>
+                    <span class="card-lbl">EXPIRES</span>
+                    <strong id="cardPreviewExpiry">MM/YY</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group col-span-2">
+                  <label for="cardNumber">Card Number *</label>
+                  <input type="text" id="cardNumber" maxlength="19" placeholder="4532 8910 2345 6789" required>
+                </div>
+                <div class="form-group col-span-2">
+                  <label for="cardName">Cardholder Name *</label>
+                  <input type="text" id="cardName" placeholder="Alex Mercer" required>
+                </div>
+                <div class="form-group">
+                  <label for="cardExpiry">Expiration Date *</label>
+                  <input type="text" id="cardExpiry" maxlength="5" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                  <label for="cardCvv">Security CVV *</label>
+                  <input type="password" id="cardCvv" maxlength="4" placeholder="123" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- UPI View -->
+            <div class="pay-method-view" id="payMethodUpi" style="display:none;">
+              <div class="upi-box">
+                <p>Enter your Virtual Payment Address (VPA) / UPI ID:</p>
+                <div class="form-group">
+                  <input type="text" id="upiId" placeholder="username@okhdfcbank / yourname@upi">
+                </div>
+                <div class="qr-sample">
+                  <div class="qr-mock">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="currentColor">
+                      <rect width="100" height="100" fill="#f1f5f9"/>
+                      <rect x="10" y="10" width="25" height="25" fill="#0f172a"/>
+                      <rect x="65" y="10" width="25" height="25" fill="#0f172a"/>
+                      <rect x="10" y="65" width="25" height="25" fill="#0f172a"/>
+                      <rect x="16" y="16" width="13" height="13" fill="#f1f5f9"/>
+                      <rect x="71" y="16" width="13" height="13" fill="#f1f5f9"/>
+                      <rect x="16" y="71" width="13" height="13" fill="#f1f5f9"/>
+                      <rect x="45" y="20" width="10" height="20" fill="#0f172a"/>
+                      <rect x="45" y="60" width="20" height="25" fill="#0f172a"/>
+                      <rect x="70" y="50" width="20" height="10" fill="#0f172a"/>
+                    </svg>
+                  </div>
+                  <span>Scan with Google Pay, PhonePe, or Apple Wallet</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- COD View -->
+            <div class="pay-method-view" id="payMethodCod" style="display:none;">
+              <div class="cod-box">
+                <div class="cod-icon">💵</div>
+                <h4>Cash on Delivery Available</h4>
+                <p>Pay with cash or card upon package arrival at your doorstep. A small $2.00 COD handling fee applies.</p>
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-outline" id="backToStep1Btn">&larr; Back to Shipping</button>
+              <button type="button" class="btn btn-primary" id="goToStep3Btn">Review Order &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Order Review & Placement -->
+          <div class="checkout-step-panel" id="checkoutStep3" style="display:none;">
+            <h3 class="checkout-heading">Review & Confirm Your Order</h3>
+            
+            <div class="review-details-card">
+              <div class="review-row">
+                <strong>Deliver To:</strong>
+                <span id="reviewShippingSummary">Alex Mercer, 742 Evergreen Terrace</span>
+              </div>
+              <div class="review-row">
+                <strong>Payment Method:</strong>
+                <span id="reviewPaymentSummary">Card ending in ••••</span>
+              </div>
+              <div class="review-row">
+                <strong>Estimated Delivery:</strong>
+                <span id="reviewDeliveryDate">3-4 business days</span>
+              </div>
+            </div>
+
+            <div class="review-items-list" id="reviewItemsList">
+              <!-- Rendered items -->
+            </div>
+
+            <div class="review-total-box">
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="reviewSubtotal">$0.00</span>
+              </div>
+              <div class="summary-line" id="reviewDiscountLine" style="display:none;">
+                <span>Discount</span>
+                <span id="reviewDiscount">-$0.00</span>
+              </div>
+              <div class="summary-line">
+                <span>Shipping</span>
+                <span id="reviewShipping">$0.00</span>
+              </div>
+              <div class="summary-line">
+                <span>Taxes</span>
+                <span id="reviewTax">$0.00</span>
+              </div>
+              <div class="summary-line total-line">
+                <span>Final Order Total</span>
+                <span id="reviewTotalAmount" class="grand-total-val">$0.00</span>
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-outline" id="backToStep2Btn">&larr; Edit Payment</button>
+              <button type="submit" class="btn btn-primary btn-lg" id="placeOrderFinalBtn">
+                <span>Confirm & Place Order</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Order Success Confirmation Native <dialog> Modal -->
+  <dialog class="custom-dialog success-dialog" id="orderSuccessDialog">
+    <div class="dialog-content text-center">
+      <div class="success-checkmark-circle">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 class="success-title">Order Confirmed!</h2>
+      <p class="success-subtitle">Thank you for your purchase. We are preparing your hardware for flight dispatch.</p>
+      
+      <div class="order-receipt-card">
+        <div class="receipt-header">
+          <div>
+            <span class="receipt-lbl">ORDER NUMBER</span>
+            <strong class="receipt-val" id="receiptOrderId">#NX-892410</strong>
+          </div>
+          <div>
+            <span class="receipt-lbl">DATE</span>
+            <strong class="receipt-val" id="receiptDate">Today</strong>
+          </div>
+        </div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-summary" id="receiptItemsSummary">
+          <!-- Summary items -->
+        </div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-total-row">
+          <span>Amount Paid:</span>
+          <strong id="receiptTotalAmount">$0.00</strong>
+        </div>
+      </div>
+
+      <div class="success-modal-actions">
+        <button class="btn btn-primary" id="continueShoppingAfterOrderBtn">Continue Shopping</button>
+        <button class="btn btn-outline" onclick="window.print()">Print Receipt</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Floating Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- JavaScript Entry Point -->
+  <script src="app.js"></script>
+</body>
+</html>
